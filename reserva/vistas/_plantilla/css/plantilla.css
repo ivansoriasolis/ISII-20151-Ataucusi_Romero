@@ -482,6 +482,12 @@ form li:nth-child(2n){
 .calendario .cal_clo img:hover{
     border-color: #ff6666;
 }
+#cal_anio{
+    width: 80px;
+}
+#cal_mes{
+    width: 120px;
+}
 /** } */
 
 .res_intervalo label.corto {

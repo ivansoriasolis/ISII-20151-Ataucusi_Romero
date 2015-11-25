@@ -1,0 +1,47 @@
+<div class="login_head">
+    <h2>Acceder</h2>
+    <p class="clear"></p>
+</div>
+<div class="login_body">
+    <h3><?php echo $this->titulo ?></h3>
+    <?php if (isset($this->error)) : ?>
+        <div class="error">
+            <img src="<?php echo $this->_plantilla ?>img/error.png" alt="Error de formulario">
+            <span>Se ha detectado los siguientes errores:</span>
+            <?php for ($i = 0; $i < count($this->error); $i++) : ?>
+                <br><?php echo $i + 1, '. ', $this->error[$i] ?>
+            <?php endfor; ?>
+        </div>
+    <?php endif; ?>
+    <form method="post">
+        <input type="hidden" name="guardar" value="1">
+        <ul>
+            <li>
+                <label for="rol">Elija rol:</label>
+                <select name="rol" id="rol">
+                    <?php if (isset($this->dato['rol'])) : ?>
+                        <option value="usu"<?php echo ($this->dato['rol'] == 'usu')? ' selected': '' ?>>Usuario</option>
+                        <option value="admin"<?php echo ($this->dato['rol'] == 'admin')? ' selected': '' ?>>administrador</option>
+                        <option value="cont"<?php echo ($this->dato['rol'] == 'cont')? ' selected': '' ?>>Control</option>
+                    <?php else: ?>
+                        <option value="usu">Usuario</option>
+                        <option value="admin">Administrador</option>
+                        <option value="cont">Control</option>
+                    <?php endif; ?>
+                </select>
+            </li>
+            <li>
+                <label for="email">Email</label>
+                <input type="text" class="in" name="email" id="email" required placeholder="ejemplo@reserva.com"
+                       value="<?php echo isset($this->dato['email']) ? $this->dato['email'] : '' ?>">
+            </li>
+            <li>
+                <label for="clave">Clave</label>
+                <input type="password" class="in" name="clave" id="clave" required>
+            </li>
+            <li>
+                <input type="submit" class="submit" value="Enviar">
+            </li>
+        </ul>
+    </form>
+</div>  

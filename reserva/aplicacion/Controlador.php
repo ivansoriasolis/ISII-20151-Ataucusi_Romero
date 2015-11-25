@@ -300,6 +300,16 @@ abstract class Controlador {
     }
 
     /**
+     * Convierte fecha dd-mm-yyyy a yyyy-mm-dd
+     * @param type $fecha
+     * @return int
+     */
+    protected function fechaMysql($fecha) {
+        $fecha = explode('-', $fecha);
+        return $fecha[2] . '-' . $fecha[1] . '-' . $fecha[0];
+    }
+
+    /**
      * Método que genera una clave
      * @return string
      */

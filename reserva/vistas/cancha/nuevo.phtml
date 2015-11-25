@@ -1,0 +1,38 @@
+<div class="login_head">
+    <h2>Cancha</h2>
+    <ul class="opciones">
+        <li><a href="cancha/listar">Listar</a></li>
+        <li><a href="cancha/nuevo">Nuevo</a></li>
+    </ul>
+    <p class="clear"></p>
+</div>
+<div class="login_body">
+    <h3><?php echo $this->titulo ?></h3>
+    <?php if (isset($this->error)) : ?>
+        <div class="error">
+            <img src="<?php echo $this->_plantilla ?>img/error.png" alt="Error de formulario">
+            <span>Se ha detectado los siguientes errores:</span>
+            <?php for ($i = 0; $i < count($this->error); $i++) : ?>
+                <br><?php echo $i + 1, '. ', $this->error[$i] ?>
+            <?php endfor; ?>
+        </div>
+    <?php endif; ?>
+    <form method="post">
+        <input type="hidden" name="guardar" value="1">
+        <ul>
+            <li>
+                <label for="nombre">Nombre</label>
+                <input type="text" class="in" name="nombre" id="nombre" required 
+                       value="<?php echo isset($this->dato['nombre']) ? $this->dato['nombre'] : '' ?>">
+            </li>
+            <li>
+                <label for="ubicacion">Ubicacion</label>
+                <input type="text" class="in" name="ubicacion" id="ubicacion" required 
+                       value="<?php echo isset($this->dato['ubicacion']) ? $this->dato['ubicacion'] : '' ?>">
+            </li>
+            <li>
+                <input type="submit" class="submit" value="Enviar">
+            </li>
+        </ul>
+    </form>
+</div> 

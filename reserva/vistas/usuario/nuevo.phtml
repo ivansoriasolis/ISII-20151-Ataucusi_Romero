@@ -1,0 +1,60 @@
+<div class="login_head">
+    <h2>Usuario</h2>
+    <p class="clear"></p>
+</div>
+<div class="login_body">
+    <h3><?php echo $this->titulo ?></h3>
+    <?php if (isset($this->error)) : ?>
+        <div class="error">
+            <img src="<?php echo $this->_plantilla ?>img/error.png" alt="Error de formulario">
+            <span>Se ha detectado los siguientes errores:</span>
+            <?php for ($i = 0; $i < count($this->error); $i++) : ?>
+                <br><?php echo $i + 1, '. ', $this->error[$i] ?>
+            <?php endfor; ?>
+        </div>
+    <?php endif; ?>
+    <form method="post">
+        <input type="hidden" name="guardar" value="1">
+        <ul>
+            <li>
+                <label for="nombre">Nombre</label>
+                <input type="text" class="in" name="nombre" id="nombre" required 
+                       value="<?php echo isset($this->dato['nombre']) ? $this->dato['nombre'] : '' ?>">
+            </li>
+            <li>
+                <label for="dni">DNI</label>
+                <input type="text" class="in" name="dni" id="dni" required 
+                       value="<?php echo isset($this->dato['dni']) ? $this->dato['dni'] : '' ?>">
+            </li>
+            
+            <li>
+                <label for="telefono">Teléfono</label>
+                <input type="text" class="in" name="telefono" id="telefono"  
+                       value="<?php echo isset($this->dato['telefono']) ? $this->dato['telefono'] : '' ?>">
+            </li>
+            <li>
+                <label for="direccion">Dirección</label>
+                <input type="text" class="in" name="direccion" id="direccion" required 
+                       value="<?php echo isset($this->dato['direccion']) ? $this->dato['direccion'] : '' ?>">
+            </li>
+            <li>
+                <label for="email">Email</label>
+                <input type="text" class="in" name="email" id="email" required 
+                       value="<?php echo isset($this->dato['email']) ? $this->dato['email'] : '' ?>">
+            </li>
+            <li>
+                <label for="clave">Clave</label>
+                <input type="password" class="in" name="clave" id="clave" required 
+                       value="<?php echo isset($this->dato['clave']) ? $this->dato['clave'] : '' ?>">
+            </li>
+            <li>
+                <label for="reclave">Repite clave</label>
+                <input type="password" class="in" name="reclave" id="reclave" required 
+                       value="<?php echo isset($this->dato['reclave']) ? $this->dato['reclave'] : '' ?>">
+            </li>
+            <li>
+                <input type="submit" class="submit" value="Enviar">
+            </li>
+        </ul>
+    </form>
+</div>  

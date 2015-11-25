@@ -1,0 +1,44 @@
+<div class="login_head">
+    <h2>Cancha</h2>
+    <ul class="opciones">
+        <li><a href="cancha/listar">Listar</a></li>
+        <li><a href="cancha/nuevo">Nuevo</a></li>
+    </ul>
+    <p class="clear"></p>
+</div>
+<div class="login_body">
+    <h3><?php echo $this->titulo ?></h3>
+    <?php if (isset($this->error)) : ?>
+        <div class="error">
+            <img src="<?php echo $this->_plantilla ?>img/error.png" alt="Error de formulario">
+            <span>Se ha detectado los siguientes errores:</span>
+            <?php for ($i = 0; $i < count($this->error); $i++) : ?>
+                <br><?php echo $i + 1, '. ', $this->error[$i] ?>
+            <?php endfor; ?>
+        </div>
+    <?php endif; ?>
+    <form method="post">
+        <input type="hidden" name="guardar" value="1">
+        <ul>
+            <label for="calificacion">Elija puntage:</label>
+                <select name="calificacion" id="calificacion">
+                    <?php if (isset($this->dato['calificacion'])) : ?>
+                        <option value=1<?php echo ($this->dato['calificacion'] == 1)? ' selected': '' ?>>Muy malo</option>
+                        <option value=2<?php echo ($this->dato['calificacion'] == 2)? ' selected': '' ?>>Malo</option>
+                        <option value=3<?php echo ($this->dato['calificacion'] == 3)? ' selected': '' ?>>Regular</option>
+                        <option value=4<?php echo ($this->dato['calificacion'] == 4)? ' selected': '' ?>>Bueno</option>
+                        <option value=5<?php echo ($this->dato['calificacion'] == 5)? ' selected': '' ?>>Muy bueno</option>
+                    <?php else: ?>
+                        <option value=1>Muy malo</option>
+                        <option value=2>Malo</option>
+                        <option value=3>regular</option>
+                        <option value=4>Bueno</option>
+                        <option value=5>Muy bueno</option>
+                    <?php endif; ?>
+                </select>
+            <li>
+                <input type="submit" class="submit" value="Enviar">
+            </li>
+        </ul>
+    </form>
+</div> 

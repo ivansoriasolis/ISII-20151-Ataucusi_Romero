@@ -1,0 +1,49 @@
+<div class="login_head">
+    <h2>Cancha</h2>
+    <ul class="opciones">
+        <li>
+            <form class="buscar_nombre">
+                <input type="text" name="nombre" id="nombre" class="no mediano" required placeholder="Buscar nobre"> 
+            </form>
+        </li>
+        <li><a href="cancha/listar">Listar</a></li>
+        <li><a href="cancha/nuevo">Nuevo</a></li>
+    </ul>
+    <p class="clear"></p>
+</div>
+<div class="login_body">
+    <h3><?php echo $this->titulo ?></h3>
+    <?php if (Sesion::get('_msg')) : ?>
+        <div class="correcto">
+            <img src="<?php echo $this->_plantilla ?>img/correcto.png" alt="Guadado correctamente">
+            <?php
+            echo Sesion::get('_msg');
+            Sesion::matar('_msg');
+            ?>
+        </div>
+    <?php endif; ?>
+    <?php if ($this->dato) : ?>
+        <table class="tabla">
+            <tr><th>Nombre</th><th>Ubicacion</th><th class="opc4">Opción</th></tr>
+                    <?php for ($i = 0; $i < count($this->dato); $i++) : ?>
+                <tr>
+                    <td><?php echo $this->dato[$i]['nombre'] ?></td>
+                    <td><?php echo $this->dato[$i]['ubicacion'] ?></td>
+                    <td>
+                        <a href="cancha/editar/<?php echo $this->dato[$i]['id'] ?>">
+                            <img src="<?php echo $this->_plantilla ?>img/edit.png" title="Editar"></a> |
+                        <a href="cancha/eliminar/<?php echo $this->dato[$i]['id'] ?>">
+                            <img src="<?php echo $this->_plantilla ?>img/delete.png" title="Eliminar"></a> |
+                        <a href="reserva/listarMio/<?php echo $this->dato[$i]['id'] ?>">
+                            <img src="<?php echo $this->_plantilla ?>img/correcto.png" title="Ver reservas"></a>
+                    </td>
+                </tr>
+            <?php endfor; ?>            
+        </table>
+        <?php if (isset($this->paginar)) : ?>
+            <?php echo $this->paginar ?>
+        <?php endif; ?>
+    <?php else: ?>
+        <p>No hay registros</p>
+    <?php endif; ?>
+</div>  

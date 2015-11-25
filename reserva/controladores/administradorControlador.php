@@ -42,13 +42,24 @@ class administradorControlador extends Controlador {
             if (!isset($this->_vista->error)) {
                 $this->quitar(array('guardar', 'reclave'));
                 $this->post['clave'] = md5($this->post['clave']);
-                $this->_modelo->insertar($this->getPost());
-                Sesion::set('_msg', 'Se ha creado su cuenta de  administrador');
+                $this->_modelo->insertar($this->getPost());                
+                Sesion::set('iniciado', TRUE);
+                Sesion::set('nombre',$this->post['nombre']);
+                Sesion::set('nombre',$this->post['nombre']);
+                Sesion::set('rol', 'admin');
+                Sesion::set('id', $this->post['id']);
+                $this->redireccionar();
             }
         }
         $this->getLibreria('funciones');
         $this->_vista->titulo = 'Nuevo administrador';
         $this->_vista->renderizar('nuevo');
+    }
+    public function buscar_cancha($nombre) {
+        $this->_modelo = $this->getModelo('cancha');
+        $this->_vista->dato = $this->_modelo->buscarCancha($nombre);
+        $this->_vista->renderizar('buscar', TRUE);
+
     }
 
     

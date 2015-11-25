@@ -1,0 +1,41 @@
+<div class="login_head">
+    <h2>Reserva</h2>
+    
+    <p class="clear"></p>
+</div>
+<div class="login_body">
+    <h3><?php echo $this->titulo ?></h3>
+    <?php if (Sesion::get('_msg')) : ?>
+        <div class="correcto">
+            <img src="<?php echo $this->_plantilla ?>img/correcto.png" alt="Guadado correctamente">
+            <?php
+            echo Sesion::get('_msg');
+            Sesion::matar('_msg');
+            ?>
+        </div>
+    <?php endif; ?>
+    <?php if ($this->dato) : ?>
+        <table class="tabla">
+            <tr><th>Nombre</th><th>fecha</th><th>hora</th><th class="opc3">Opción</th></tr>
+                    <?php for ($i = 0; $i < count($this->dato); $i++) : ?>
+                <tr>
+                    <td><?php echo $this->dato[$i]['nombre'] ?></td>
+                    <td><?php echo $this->dato[$i]['fecha'] ?></td>
+                    <td><?php echo $this->dato[$i]['hora'] ?></td>
+                    <td>
+                        <a href="reserva/eliminar/<?php echo $this->dato[$i]['id'] ?>">
+                            <img src="<?php echo $this->_plantilla ?>img/delete.png" title="Eliminar     "></a>              |
+                        <a href="cancha/calificar/<?php echo $this->dato[$i]['id'] ?>">
+                            <img src="<?php echo $this->_plantilla ?>img/calificar.jpg" title="Calificar"></a>
+                    </td>
+                    </td>
+                </tr>
+            <?php endfor; ?>            
+        </table>
+        <?php if (isset($this->paginar)) : ?>
+            <?php echo $this->paginar ?>
+        <?php endif; ?>
+    <?php else: ?>
+        <p>No hay registros</p>
+    <?php endif; ?>
+</div>  

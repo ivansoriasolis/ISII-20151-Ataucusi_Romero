@@ -1,3 +1,30 @@
+<?php if (Sesion::get('rol') && Sesion::get('rol') == 'admin') : ?>
+    <ul class="menu">
+        <li>
+            <a href="#">Cancha</a>
+            <ul>
+                <li><a href="cancha/listar">Mis Canchas</a></li> 
+            </ul>
+        </li>
+
+    </ul>
+<?php elseif (Sesion::get('rol') && Sesion::get('rol') == 'usu') : ?>
+    <ul class="menu">
+        <li>
+            <a href="#">Cancha</a>
+            <ul>
+                <li><a href="cancha/listarCancha">Canchas</a></li> 
+            </ul>
+        </li>
+        <li>
+            <a href="#">Reserva</a>
+            <ul>
+                <li><a href="reserva/listar">Lista</a></li> 
+            </ul>
+        </li>
+
+    </ul>
+<?php endif; ?>
 <ul class="menu derecha">
     <li>
         <?php if (Sesion::get('iniciado')): ?>
@@ -7,9 +34,14 @@
             </ul>
         <?php else: ?>
             <a href="login">Acceder</a>        
-    </li>
-    <li>
-           <a href="registrar">Registrate</a>   
+        </li>
+        <li>     
+            <a href="#">Registrate</a>
+            <ul>
+                <li><a href="usuario/nuevo">Usuario</a></li> 
+                <li><a href="administrador/nuevo">Administardor</a></li> 
+            </ul>
+
         <?php endif; ?>
     </li>
 </ul>

@@ -1,0 +1,10 @@
+<?php if (count($this->dispo)): ?>
+<label>Hora:</label>
+    <?php foreach ($this->dispo as $value) : ?>
+        <span style="display: inline-block"><input type="radio" name="hora" id="<?php echo 'hora_' . $value ?>" value="<?php echo $value ?>">
+            <label for="<?php echo 'hora_' . $value ?>" class="corto"><?php echo $value ?></label>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <?php endforeach; ?>
+<?php else: ?>
+    <?php echo 'Fecha no valida.' ?>
+<?php endif; ?>
+
